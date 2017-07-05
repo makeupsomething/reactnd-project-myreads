@@ -2,6 +2,7 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import SearchBooks from './SearchBooks'
 import OpenSearch from './OpenSearch'
+import ListBooks from './ListBooks'
 import ShelfChanger from './ShelfChanger'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
@@ -25,6 +26,9 @@ class BooksApp extends React.Component {
               <h1>MyReads</h1>
             </div>
             <div className="list-books-content">
+            <ListBooks
+            books={this.state.books}
+            />
               <div>
                 <div className="bookshelf">
                   <h2 className="bookshelf-title">Currently Reading</h2>

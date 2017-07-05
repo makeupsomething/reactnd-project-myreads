@@ -6,9 +6,8 @@ class OpenSearch extends Component {
   render() {
     return (
       <div className="open-search">
-        //<a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
         <Link
-          to='/create'
+          to='/add'
           className='add-book'>
           Add a book</Link>
       </div>
