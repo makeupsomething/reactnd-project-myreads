@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom'
 import SearchBooks from './SearchBooks'
 import OpenSearch from './OpenSearch'
 import ListBooks from './ListBooks'
+import Shelf from './Shelf'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 
@@ -26,31 +27,15 @@ class BooksApp extends React.Component {
             </div>
             <div className="list-books-content">
               <div>
-                <div className="bookshelf">
-                  <h2 className="bookshelf-title">Currently Reading</h2>
-                  <div className="bookshelf-books">
-                    <ListBooks
-                    books={this.state.books}
-                    />
-                  </div>
-                </div>
-                <div className="bookshelf">
-                  <h2 className="bookshelf-title">Want to Read</h2>
-                  <div className="bookshelf-books">
-                    <ListBooks
-                    books={this.state.books}
-                    />
-                  </div>
-                </div>
-                <div className="bookshelf">
-                  <h2 className="bookshelf-title">Read</h2>
-                  <div className="bookshelf-books">
-                  <ListBooks
-                    books={this.state.books}
-                    />
-                    </div>
-                  </div>
-                </div>
+                <Shelf
+                shelfName='Reading'
+                />
+                <Shelf
+                shelfName='Want To Read'
+                />
+                <Shelf
+                shelfName='Read'
+                />
               </div>
               <OpenSearch/>
               <Route path='/add' render={() => (
@@ -58,6 +43,7 @@ class BooksApp extends React.Component {
               )}/>
             </div>
         </div>
+      </div>
       )
     }
   }
