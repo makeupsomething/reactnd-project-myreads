@@ -11,9 +11,7 @@ class ListBooks extends Component {
           {books.map((book) => (
             <li key={book.id} className='contact-list-item'>
               <Book
-              title={book.title}
-              authors={book.authors}
-              coverImg={book.imageLinks.smallThumbnail}
+              book={book}
               />
             </li>
           ))}
