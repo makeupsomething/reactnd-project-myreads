@@ -2,21 +2,11 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import SearchBooks from './SearchBooks'
 import OpenSearch from './OpenSearch'
-import ListBooks from './ListBooks'
 import Shelf from './Shelf'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 
 class BooksApp extends React.Component {
-  state = {
-    books: []
-  }
-
-  componentDidMount() {
-  BooksAPI.getAll().then((books) => {
-    this.setState({ books })
-  })
-}
 
   render() {
     return (
@@ -28,13 +18,16 @@ class BooksApp extends React.Component {
             <div className="list-books-content">
               <div>
                 <Shelf
-                shelfName='Reading'
+                shelfName='Currently Reading'
+                shelfType='currentlyReading'
                 />
                 <Shelf
                 shelfName='Want To Read'
+                shelfType='wantToRead'
                 />
                 <Shelf
                 shelfName='Read'
+                shelfType='read'
                 />
               </div>
               <OpenSearch/>
