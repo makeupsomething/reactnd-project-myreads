@@ -16,7 +16,7 @@ class Book extends Component {
             }}>
           </div>
           <ShelfChanger
-          book={book}/>
+          bookName={book}/>
         </div>
           <div className="title">{book.title}</div>
           <div className="authors">{book.authors}</div>
