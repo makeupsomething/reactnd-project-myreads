@@ -1,26 +1,19 @@
 import React, { Component } from 'react';
-import { Refresh } from 'react-router-dom'
-import * as BooksAPI from './BooksAPI'
 
 class ShelfChanger extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      book: Object,
       value: 'none'
     }
 
     this.handleChange = this.handleChange.bind(this);
   }
 
-  componentDidMount() {
-    this.setState({ book: this.props.bookName })
- }
-
  handleChange(event) {
   this.setState({value: event.target.value});
-  //event.preventDefault();
-  BooksAPI.update(this.state.book, event.target.value)
+  if (this.props.onUpdateShelf)
+      this.props.onUpdateShelf(event.target.value)
 }
 
 
