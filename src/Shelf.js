@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import ListBooks from './ListBooks'
-import escapeRegExp from 'escape-string-regexp'
-import sortBy from 'sort-by'
+import Book from './Book'
 import * as BooksAPI from './BooksAPI'
 
 class Shelf extends Component {
@@ -10,17 +8,21 @@ class Shelf extends Component {
   }
 
   componentDidMount() {
-  BooksAPI.getAll().then((books) => {
-    this.setState({ books })
-  })
- }
+    BooksAPI.getAll().then((books) => {
+      this.setState({ books })
+    })
+  }
+
+  updateBookStatus(book, shelfName) {
+     console.log('update book status..' + book.title + '...' + shelfName)
+     //BooksAPI.update(book, shelfName)
+   }
 
   render() {
     const { shelfName, shelfType } = this.props
-
     let thisSelfStatus
+    console.log(this.state.books.length);
     if (shelfName) {
-      const match = new RegExp(escapeRegExp(shelfType), 'i')
       thisSelfStatus = this.state.books.filter((book) => (shelfType === book.shelf))
     } else {
       thisSelfStatus = this.state.books
@@ -30,9 +32,16 @@ class Shelf extends Component {
         <div className="bookshelf">
           <h2 className="bookshelf-title">{shelfName}</h2>
           <div className="bookshelf-books">
-            <ListBooks
-            books={thisSelfStatus}
-            />
+            <ol className='book-list'>
+              {thisSelfStatus.map((book) => (
+                <li key={book.id} className='contact-list-item'>
+                  <Book
+                  book={book}
+                  onUpdateShelf={this.updateBookStatus(book, shelfName)}
+                  />
+                </li>
+              ))}
+            </ol>
         </div>
        </div>
     )

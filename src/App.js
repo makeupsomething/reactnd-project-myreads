@@ -4,9 +4,10 @@ import SearchBooks from './SearchBooks'
 import OpenSearch from './OpenSearch'
 import Shelf from './Shelf'
 import './App.css'
+import * as BooksAPI from './BooksAPI'
+window.BooksAPI = BooksAPI
 
 class BooksApp extends React.Component {
-
   render() {
     return (
       <div className="app">
