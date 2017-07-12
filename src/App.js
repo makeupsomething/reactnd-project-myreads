@@ -29,6 +29,10 @@ class BooksApp extends React.Component {
      })
    }
 
+   searchForBooks(query) {
+     return BooksAPI.search(query, 10)
+   }
+
   render() {
     return (
       <div className="app">
@@ -69,7 +73,11 @@ class BooksApp extends React.Component {
         )}/>
         <OpenSearch/>
         <Route path='/add' render={() => (
-          <SearchBooks/>
+          <SearchBooks
+          searchForBook={() => {
+            this.searchForBooks()
+          }}
+          />
         )}/>
       </div>
       )

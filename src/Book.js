@@ -4,21 +4,23 @@ import { Route } from 'react-router-dom'
 
 class Book extends Component {
   constructor(props) {
-    super(props);
-    this.state = {
-      value: 'none'
-    }
+      super(props);
+      this.state = {
+          value: 'none'
+      }
 
-    this.handleChange = this.handleChange.bind(this);
+      this.handleChange = this.handleChange.bind(this);
   }
 
- handleChange(event) {
-  this.setState({value: event.target.value});
-  if (this.props.onUpdateShelf) {
-      console.log('change status to ' + event.target.value)
-      this.props.onUpdateShelf(this.props.book, event.target.value)
-    }
-}
+  handleChange(event) {
+      this.setState({
+          value: event.target.value
+      });
+      if (this.props.onUpdateShelf) {
+          console.log('change status to ' + event.target.value)
+          this.props.onUpdateShelf(this.props.book, event.target.value)
+      }
+  }
 
   render() {
     const { book } = this.props
