@@ -13,15 +13,21 @@ class Shelf extends Component {
     })
   }
 
-  updateBookStatus(book, shelfName) {
-     console.log('update book status..' + book.title + '...' + shelfName)
-     //BooksAPI.update(book, shelfName)
+  componentDidUpdate() {
+    console.log('i updated' + this);
+  }
+
+  updateBookStatus(book, newShelf) {
+     console.log('update book status..' + book.title + '...' + newShelf)
+     BooksAPI.update(book, newShelf)
+     BooksAPI.getAll().then((books) => {
+       this.setState({ books })
+     })
    }
 
   render() {
     const { shelfName, shelfType } = this.props
     let thisSelfStatus
-    console.log(this.state.books.length);
     if (shelfName) {
       thisSelfStatus = this.state.books.filter((book) => (shelfType === book.shelf))
     } else {
@@ -37,7 +43,9 @@ class Shelf extends Component {
                 <li key={book.id} className='contact-list-item'>
                   <Book
                   book={book}
-                  onUpdateShelf={this.updateBookStatus(book, shelfName)}
+                  onUpdateShelf={(book, shelfType) => {
+                    this.updateBookStatus(book, shelfType)
+                  }}
                   />
                 </li>
               ))}
