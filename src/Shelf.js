@@ -3,35 +3,15 @@ import Book from './Book'
 import * as BooksAPI from './BooksAPI'
 
 class Shelf extends Component {
-  state = {
-    books: []
-  }
-
-  componentDidMount() {
-    BooksAPI.getAll().then((books) => {
-      this.setState({ books })
-    })
-  }
-
-  componentDidUpdate() {
-    console.log('i updated' + this);
-  }
-
-  updateBookStatus(book, newShelf) {
-     console.log('update book status..' + book.title + '...' + newShelf)
-     BooksAPI.update(book, newShelf)
-     BooksAPI.getAll().then((books) => {
-       this.setState({ books })
-     })
-   }
 
   render() {
-    const { shelfName, shelfType } = this.props
+    console.log(this.props);
+    const { shelfName, shelfType, books, updateBookStatus } = this.props
     let thisSelfStatus
-    if (shelfName) {
-      thisSelfStatus = this.state.books.filter((book) => (shelfType === book.shelf))
+    if (shelfName && books.length > 0) {
+      thisSelfStatus = books.filter((book) => (shelfType === book.shelf))
     } else {
-      thisSelfStatus = this.state.books
+      thisSelfStatus = books
     }
 
     return (
@@ -44,7 +24,7 @@ class Shelf extends Component {
                   <Book
                   book={book}
                   onUpdateShelf={(book, shelfType) => {
-                    this.updateBookStatus(book, shelfType)
+                    updateBookStatus(book, shelfType)
                   }}
                   />
                 </li>

@@ -8,6 +8,27 @@ import * as BooksAPI from './BooksAPI'
 window.BooksAPI = BooksAPI
 
 class BooksApp extends React.Component {
+
+  state = {
+    books: []
+  }
+
+  componentDidMount() {
+    console.log('mounting' )
+    BooksAPI.getAll().then((books) => {
+      this.setState({ books })
+    })
+    console.log('got books' + this.state.books.length)
+  }
+
+  updateBookStatus(book, newShelf) {
+     console.log('update book status..' + book.title + '...' + newShelf)
+     BooksAPI.update(book, newShelf)
+     BooksAPI.getAll().then((books) => {
+       this.setState({ books })
+     })
+   }
+
   render() {
     return (
       <div className="app">
@@ -21,14 +42,26 @@ class BooksApp extends React.Component {
                   <Shelf
                   shelfName='Currently Reading'
                   shelfType='currentlyReading'
+                  books={this.state.books}
+                  updateBookStatus={(book, shelfType) => {
+                    this.updateBookStatus(book, shelfType)
+                  }}
                   />
                   <Shelf
                   shelfName='Want To Read'
                   shelfType='wantToRead'
+                  books={this.state.books}
+                  updateBookStatus={(book, shelfType) => {
+                    this.updateBookStatus(book, shelfType)
+                  }}
                   />
                   <Shelf
                   shelfName='Read'
                   shelfType='read'
+                  books={this.state.books}
+                  updateBookStatus={(book, shelfType) => {
+                    this.updateBookStatus(book, shelfType)
+                  }}
                   />
               </div>
             </div>
