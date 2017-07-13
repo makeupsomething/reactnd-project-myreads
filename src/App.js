@@ -10,7 +10,8 @@ window.BooksAPI = BooksAPI
 class BooksApp extends React.Component {
 
   state = {
-    books: []
+    books: [],
+    foundBooks: []
   }
 
   componentDidMount() {
@@ -30,7 +31,11 @@ class BooksApp extends React.Component {
    }
 
    searchForBooks(query) {
-     return BooksAPI.search(query, 10)
+     console.log('searching..' + query)
+     BooksAPI.search(query, 10).then((foundBooks) => {
+       this.setState({ foundBooks })
+     })
+     console.log(this.state.foundBooks);
    }
 
   render() {
@@ -74,8 +79,8 @@ class BooksApp extends React.Component {
         <OpenSearch/>
         <Route path='/add' render={() => (
           <SearchBooks
-          searchForBook={() => {
-            this.searchForBooks()
+          searchForBook={(query) => {
+            this.searchForBooks(query)
           }}
           />
         )}/>
