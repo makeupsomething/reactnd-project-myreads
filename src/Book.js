@@ -24,7 +24,7 @@ class Book extends Component {
 
   render() {
     const { book } = this.props
-
+    console.log(book.title)
     return (
       <div className="book">
         <div className="book-top">
@@ -32,7 +32,7 @@ class Book extends Component {
             className="book-cover"
             style={{ width: 128,
             height: 188,
-            backgroundImage: `url(${book.imageLinks.smallThumbnail})`
+            backgroundImage: `url(${book.previewLink})`
             }}>
           </div>
           <Route path='/' render={({ history }) => (

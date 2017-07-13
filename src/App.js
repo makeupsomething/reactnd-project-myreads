@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom'
 import SearchBooks from './SearchBooks'
 import OpenSearch from './OpenSearch'
 import Shelf from './Shelf'
+import ListResults from './ListResults'
 import './App.css'
 import * as BooksAPI from './BooksAPI'
 window.BooksAPI = BooksAPI
@@ -78,11 +79,16 @@ class BooksApp extends React.Component {
         )}/>
         <OpenSearch/>
         <Route path='/add' render={() => (
-          <SearchBooks
-          searchForBook={(query) => {
-            this.searchForBooks(query)
-          }}
-          />
+          <div>
+            <SearchBooks
+            searchForBook={(query) => {
+              this.searchForBooks(query)
+            }}
+            />
+            <ListResults
+            searchResults={this.state.foundBooks}
+            />
+          </div>
         )}/>
       </div>
       )
