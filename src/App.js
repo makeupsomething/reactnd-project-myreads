@@ -32,11 +32,12 @@ class BooksApp extends React.Component {
    }
 
    searchForBooks(query) {
-     console.log('searching..' + query)
-     BooksAPI.search(query, 10).then((foundBooks) => {
-       this.setState({ foundBooks })
-     })
-     console.log(this.state.foundBooks);
+     if(query.length > 0) {
+       BooksAPI.search(query, 10).then((foundBooks) => {
+         this.setState({ foundBooks })
+       })
+       console.log(this.state.foundBooks);
+     }
    }
 
   render() {

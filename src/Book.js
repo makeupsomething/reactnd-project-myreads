@@ -24,7 +24,15 @@ class Book extends Component {
 
   render() {
     const { book } = this.props
+    var imageUrl
     console.log(book.title)
+    if(book.hasOwnProperty("imageLinks")){
+      imageUrl = book.imageLinks.thumbnail
+    } else {
+      console.log('no thumbnail found')
+      imageUrl = './icons/no-cover.png'
+    }
+
     return (
       <div className="book">
         <div className="book-top">
@@ -32,7 +40,7 @@ class Book extends Component {
             className="book-cover"
             style={{ width: 128,
             height: 188,
-            backgroundImage: `url(${book.previewLink})`
+            backgroundImage: `url(${imageUrl})`
             }}>
           </div>
           <Route path='/' render={({ history }) => (
