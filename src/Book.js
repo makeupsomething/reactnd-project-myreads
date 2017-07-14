@@ -30,7 +30,7 @@ class Book extends Component {
       imageUrl = book.imageLinks.thumbnail
     } else {
       console.log('no thumbnail found')
-      imageUrl = './icons/no-cover.png'
+      imageUrl = 'icons/no-cover.png'
     }
 
     return (
