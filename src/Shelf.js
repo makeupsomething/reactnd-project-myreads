@@ -18,7 +18,7 @@ class Shelf extends Component {
         <div className="bookshelf">
           <h2 className="bookshelf-title">{shelfName}</h2>
           <div className="bookshelf-books">
-            <ol className='book-list'>
+            <ol className='books-grid'>
               {thisSelfStatus.map((book) => (
                 <li key={book.id} className='contact-list-item'>
                   <Book
