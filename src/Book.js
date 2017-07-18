@@ -33,6 +33,10 @@ class Book extends Component {
       imageUrl = 'icons/no-cover.png'
     }
 
+    if(book.shelf === null) {
+      book.shelf = 'none'
+    }
+
     return (
       <div className="book">
         <div className="book-top">
@@ -46,7 +50,7 @@ class Book extends Component {
           <Route path='/' render={({ history }) => (
             <div className="book-shelf-changer">
               <form>
-                  <select value={this.state.value} onChange={this.handleChange}>
+                  <select value={book.shelf} onChange={this.handleChange}>
                     <option value="none" disabled>Move to...</option>
                     <option value="wantToRead">Want to Read</option>
                     <option value="read">Read</option>

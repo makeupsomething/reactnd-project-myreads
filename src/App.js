@@ -86,15 +86,14 @@ class BooksApp extends React.Component {
               this.searchForBooks(query)
             }}
             />
-            {this.state.foundBooks.length ?
-            <ListResults
-            searchResults={this.state.foundBooks}
-            updateBookStatus={(book, shelfType) => {
-              this.updateBookStatus(book, shelfType)
-            }}
-            />
-            : <p>No results found!</p>
-            }
+              {this.state.foundBooks.length ?
+              <ListResults
+              searchResults={this.state.foundBooks}
+              updateBookStatus={(book, shelfType) => {
+                this.updateBookStatus(book, shelfType)
+              }}
+              /> : <p>No results found!</p>
+              }
           </div>
         )}/>
       </div>
