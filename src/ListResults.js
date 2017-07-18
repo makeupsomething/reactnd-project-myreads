@@ -8,7 +8,6 @@ class ListResults extends Component {
     const { searchResults, updateBookStatus } = this.props
     return (
         <div className="list-results">
-          console.log("print");
           <h2 className="results-title">Search Results</h2>
           <div className="found-books">
             <ol className='book-list'>

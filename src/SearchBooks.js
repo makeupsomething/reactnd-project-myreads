@@ -11,9 +11,7 @@ class SearchBooks extends Component {
 
   updateQuery = (query) => {
     this.setState({ query: query.trim() })
-    console.log('searching for ' + this.state.query)
     let foundBooks = this.props.searchForBook(query)
-    console.log(foundBooks)
   }
 
   clearQuery = () => {

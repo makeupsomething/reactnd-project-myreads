@@ -17,7 +17,6 @@ class Book extends Component {
           value: event.target.value
       });
       if (this.props.onUpdateShelf) {
-          console.log('change status to ' + event.target.value)
           this.props.onUpdateShelf(this.props.book, event.target.value)
       }
   }
@@ -25,11 +24,9 @@ class Book extends Component {
   render() {
     const { book } = this.props
     var imageUrl
-    console.log(book.title)
     if(book.hasOwnProperty("imageLinks")){
       imageUrl = book.imageLinks.thumbnail
     } else {
-      console.log('no thumbnail found')
       imageUrl = 'icons/no-cover.png'
     }
 

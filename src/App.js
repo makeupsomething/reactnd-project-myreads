@@ -16,15 +16,12 @@ class BooksApp extends React.Component {
   }
 
   componentDidMount() {
-    console.log('mounting' )
     BooksAPI.getAll().then((books) => {
       this.setState({ books })
     })
-    console.log('got books' + this.state.books.length)
   }
 
   updateBookStatus(book, newShelf) {
-     console.log('update book status..' + book.title + '...' + newShelf)
      BooksAPI.update(book, newShelf)
      BooksAPI.getAll().then((books) => {
        this.setState({ books })
@@ -36,7 +33,6 @@ class BooksApp extends React.Component {
        BooksAPI.search(query, 10).then((foundBooks) => {
          this.setState({ foundBooks })
        })
-       console.log(this.state.foundBooks);
      }
    }
 
