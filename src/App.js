@@ -79,7 +79,7 @@ class BooksApp extends React.Component {
           </div>
         )}/>
         <OpenSearch/>
-        <Route path='/add' render={() => (
+        <Route path='/search' render={() => (
           <div>
             <SearchBooks
             searchForBook={(query) => {

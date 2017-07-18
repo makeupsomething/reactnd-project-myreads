@@ -7,7 +7,7 @@ class OpenSearch extends Component {
     return (
       <div className="open-search">
         <Link
-          to='/add'
+          to='/search'
           className='add-book'>
           Add a book</Link>
       </div>
