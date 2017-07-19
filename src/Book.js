@@ -44,19 +44,10 @@ class Book extends Component {
             backgroundImage: `url(${imageUrl})`
             }}>
           </div>
-          <Route path='/' render={({ history }) => (
-            <div className="book-shelf-changer">
-              <form>
-                  <select value={book.shelf} onChange={this.handleChange}>
-                    <option value="none" disabled>Move to...</option>
-                    <option value="wantToRead">Want to Read</option>
-                    <option value="read">Read</option>
-                    <option value="currentlyReading">Currently Reading</option>
-                    <option value="none">None</option>
-                  </select>
-              </form>
-            </div>
-            )}/>
+            <ShelfChanger
+            book={book}
+            handleChange={this.handleChange}
+            />
         </div>
           <div className="book-title">{book.title}</div>
           <div className="book-authors">{book.authors}</div>
