@@ -1,13 +1,11 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
+import * as BooksAPI from './BooksAPI'
 import SearchBooks from './SearchBooks'
 import OpenSearch from './OpenSearch'
-import Shelf from './Shelf'
+import ListShelves from './ListShelves'
 import ListResults from './ListResults'
 import './App.css'
-import * as BooksAPI from './BooksAPI'
-window.BooksAPI = BooksAPI
-
 class BooksApp extends React.Component {
 
   state = {
@@ -45,34 +43,12 @@ class BooksApp extends React.Component {
             <div className="list-books-title">
               <h1>MyReads</h1>
             </div>
-              <div className="list-books-content">
-                <div>
-                  <Shelf
-                  shelfName='Currently Reading'
-                  shelfType='currentlyReading'
-                  books={this.state.books}
-                  updateBookStatus={(book, shelfType) => {
-                    this.updateBookStatus(book, shelfType)
-                  }}
-                  />
-                  <Shelf
-                  shelfName='Want To Read'
-                  shelfType='wantToRead'
-                  books={this.state.books}
-                  updateBookStatus={(book, shelfType) => {
-                    this.updateBookStatus(book, shelfType)
-                  }}
-                  />
-                  <Shelf
-                  shelfName='Read'
-                  shelfType='read'
-                  books={this.state.books}
-                  updateBookStatus={(book, shelfType) => {
-                    this.updateBookStatus(book, shelfType)
-                  }}
-                  />
-              </div>
-            </div>
+            <ListShelves
+            books={this.state.books}
+            updateBookStatus={(book, shelfType) => {
+              this.updateBookStatus(book, shelfType)
+            }}
+            />
           </div>
         )}/>
         <OpenSearch/>

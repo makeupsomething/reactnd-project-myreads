@@ -5,7 +5,6 @@ import * as BooksAPI from './BooksAPI'
 class Shelf extends Component {
 
   render() {
-    console.log(this.props);
     const { shelfName, shelfType, books, updateBookStatus } = this.props
     let thisSelfStatus
     if (shelfName && books.length > 0) {
