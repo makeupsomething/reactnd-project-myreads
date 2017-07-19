@@ -21,7 +21,6 @@ class SearchBooks extends Component {
   render() {
 
     const { query } = this.state
-    //const { searchForBook } = this.props
 
     return (
       <div className="search-books">
@@ -29,7 +28,8 @@ class SearchBooks extends Component {
           <div className="close-search">
             <Link
               to='/'
-              className='close-search'>
+              className='close-search'
+              onClick={this.clearQuery}>
               Close</Link>
           </div>
           <div className="search-books-input-wrapper">

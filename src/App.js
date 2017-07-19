@@ -19,6 +19,7 @@ class BooksApp extends React.Component {
     BooksAPI.getAll().then((books) => {
       this.setState({ books })
     })
+    this.setState({foundBooks: [] })
   }
 
   updateBookStatus(book, newShelf) {

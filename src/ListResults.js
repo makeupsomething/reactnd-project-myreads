@@ -10,7 +10,7 @@ class ListResults extends Component {
         <div className="list-results">
           <h2 className="results-title">Search Results</h2>
           <div className="found-books">
-            <ol className='book-list'>
+            <ol className='books-grid'>
               {searchResults.map((book) => (
                 <li key={book.id} className='book-item'>
                   <Book
