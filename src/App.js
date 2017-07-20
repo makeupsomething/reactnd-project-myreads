@@ -5,12 +5,15 @@ import SearchBooks from './SearchBooks'
 import OpenSearch from './OpenSearch'
 import ListShelves from './ListShelves'
 import ListResults from './ListResults'
+import BookDetails from './BookDetails'
 import './App.css'
 class BooksApp extends React.Component {
 
   state = {
     books: [],
-    foundBooks: []
+    foundBooks: [],
+    bookUrl: '/null',
+    book: ''
   }
 
   componentDidMount() {
@@ -35,6 +38,13 @@ class BooksApp extends React.Component {
      }
    }
 
+   setBookUrl(newUrl, book) {
+     newUrl = '/' + newUrl
+     console.log('setting url to ' + newUrl)
+     this.setState({bookUrl: newUrl})
+     this.setState({book: book})
+   }
+
   render() {
     return (
       <div className="app">
@@ -47,6 +57,8 @@ class BooksApp extends React.Component {
             books={this.state.books}
             updateBookStatus={(book, shelfType) => {
               this.updateBookStatus(book, shelfType)
+            }}
+            setBookUrl={(newUrl, book) => {this.setBookUrl(newUrl, book)
             }}
             />
           </div>
@@ -68,6 +80,10 @@ class BooksApp extends React.Component {
               /> : <p>No results found!</p>
               }
           </div>
+        )}/>
+        <Route path={this.state.bookUrl} render={() => (
+          <BookDetails
+          book={this.state.book}/>
         )}/>
       </div>
       )

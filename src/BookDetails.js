@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
 import ShelfChanger from './ShelfChanger'
-import { Route, Link } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 
-class Book extends Component {
+class BookDetails extends Component {
   constructor(props) {
       super(props);
       this.state = {
-          value: 'none',
-          bookUrl: 'none',
-          book: ''
+          value: 'none'
       }
 
       this.handleChange = this.handleChange.bind(this);
-      this.changeUrl = this.changeUrl.bind(this)
   }
 
   handleChange(event) {
@@ -24,16 +21,9 @@ class Book extends Component {
       }
   }
 
-  changeUrl(book) {
-    console.log(this.props.book)
-    this.props.setBookUrl(this.props.book.id, this.props.book)
-  }
-
   render() {
     const { book } = this.props
     var imageUrl
-    var bookUrl = '/' + book.id
-
     if(book.hasOwnProperty("imageLinks")){
       imageUrl = book.imageLinks.thumbnail
     } else {
@@ -59,13 +49,6 @@ class Book extends Component {
             handleChange={this.handleChange}
             />
         </div>
-          <Link
-            to={bookUrl}
-            className='open-book-page'
-            onClick={this.changeUrl}
-            >
-            {book.title}
-          </Link>
           <div className="book-title">{book.title}</div>
           <div className="book-authors">{book.authors}</div>
       </div>
@@ -73,4 +56,4 @@ class Book extends Component {
   }
 }
 
-export default Book
+export default BookDetails

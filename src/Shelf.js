@@ -5,7 +5,7 @@ import * as BooksAPI from './BooksAPI'
 class Shelf extends Component {
 
   render() {
-    const { shelfName, shelfType, books, updateBookStatus } = this.props
+    const { shelfName, shelfType, books, updateBookStatus, setBookUrl } = this.props
     let thisSelfStatus
     if (shelfName && books.length > 0) {
       thisSelfStatus = books.filter((book) => (shelfType === book.shelf))
@@ -24,6 +24,8 @@ class Shelf extends Component {
                   book={book}
                   onUpdateShelf={(book, shelfType) => {
                     updateBookStatus(book, shelfType)
+                  }}
+                  setBookUrl={(newUrl, book) => {setBookUrl(newUrl, book)
                   }}
                   />
                 </li>
