@@ -8,11 +8,23 @@ class Book extends Component {
       this.state = {
           value: 'none',
           bookUrl: 'none',
-          book: ''
+          book: '',
+          move: false
       }
 
       this.handleChange = this.handleChange.bind(this);
       this.changeUrl = this.changeUrl.bind(this)
+      this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  handleInputChange(event) {
+      const target = event.target;
+      const value = target.type === 'checkbox' ? target.checked : target.value;
+      const name = target.name;
+
+      this.setState({
+          [name]: value
+      });
   }
 
   handleChange(event) {
@@ -25,24 +37,26 @@ class Book extends Component {
   }
 
   changeUrl(book) {
-    console.log(this.props.book)
-    this.props.setBookUrl(this.props.book.id, this.props.book)
+      console.log(this.props.book)
+      this.props.setBookUrl(this.props.book.id, this.props.book)
   }
 
   render() {
-    const { book } = this.props
-    var imageUrl
-    var bookUrl = '/' + book.id
+          const {
+              book
+          } = this.props
+          var imageUrl
+          var bookUrl = '/' + book.id
 
-    if(book.hasOwnProperty("imageLinks")){
-      imageUrl = book.imageLinks.thumbnail
-    } else {
-      imageUrl = 'icons/no-cover.png'
-    }
+          if (book.hasOwnProperty("imageLinks")) {
+              imageUrl = book.imageLinks.thumbnail
+          } else {
+              imageUrl = 'icons/no-cover.png'
+          }
 
-    if(book.shelf === null) {
-      book.shelf = 'none'
-    }
+          if (book.shelf === null) {
+              book.shelf = 'none'
+          }
 
     return (
       <div className="book">
@@ -68,6 +82,14 @@ class Book extends Component {
           </Link>
           <div className="book-title">{book.title}</div>
           <div className="book-authors">{book.authors}</div>
+          <label>
+          Move:
+          <input
+            name="move"
+            type="checkbox"
+            checked={this.state.move}
+            onChange={this.handleInputChange} />
+        </label>
       </div>
     )
   }
