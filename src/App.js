@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import SearchBooks from './SearchBooks'
 import OpenSearch from './OpenSearch'
+import ShelfChanger from './ShelfChanger'
 import ListShelves from './ListShelves'
 import ListResults from './ListResults'
 import BookDetails from './BookDetails'
@@ -64,6 +65,9 @@ class BooksApp extends React.Component {
           </div>
         )}/>
         <OpenSearch/>
+        <ShelfChanger
+        book={this.state.book}
+        handleChange={this.updateBookStatus}/>
         <Route path='/search' render={() => (
           <div>
             <SearchBooks

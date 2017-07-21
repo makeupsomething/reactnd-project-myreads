@@ -68,10 +68,6 @@ class Book extends Component {
             backgroundImage: `url(${imageUrl})`
             }}>
           </div>
-            <ShelfChanger
-            book={book}
-            handleChange={this.handleChange}
-            />
         </div>
           <Link
             to={bookUrl}

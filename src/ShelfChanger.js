@@ -5,7 +5,7 @@ class ShelfChanger extends Component {
     const { book, handleChange } = this.props
 
     return (
-      <div className="book-shelf-changer">
+      <div className="book-shelf-changer-bulk">
         <form>
             <select value={book.shelf} onChange={handleChange}>
               <option value="none" disabled>Move to...</option>
