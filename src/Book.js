@@ -18,6 +18,7 @@ class Book extends Component {
   }
 
   handleInputChange(event) {
+      console.log("add a book " + this.props.book.title)
       const target = event.target;
       const value = target.type === 'checkbox' ? target.checked : target.value;
       const name = target.name;
@@ -25,6 +26,10 @@ class Book extends Component {
       this.setState({
           [name]: value
       });
+      
+      if (this.props.addBookToMove) {
+          this.props.addBookToMove(this.props.book)
+      }
   }
 
   handleChange(event) {
@@ -42,21 +47,20 @@ class Book extends Component {
   }
 
   render() {
-          const {
-              book
-          } = this.props
-          var imageUrl
-          var bookUrl = '/' + book.id
+    const {book} = this.props
 
-          if (book.hasOwnProperty("imageLinks")) {
-              imageUrl = book.imageLinks.thumbnail
-          } else {
-              imageUrl = 'icons/no-cover.png'
-          }
+    var imageUrl
+    var bookUrl = '/' + book.id
 
-          if (book.shelf === null) {
-              book.shelf = 'none'
-          }
+    if (book.hasOwnProperty("imageLinks")) {
+        imageUrl = book.imageLinks.thumbnail
+    } else {
+        imageUrl = 'icons/no-cover.png'
+    }
+
+    if (book.shelf === null) {
+        book.shelf = 'none'
+    }
 
     return (
       <div className="book">
@@ -72,8 +76,7 @@ class Book extends Component {
           <Link
             to={bookUrl}
             className='open-book-page'
-            onClick={this.changeUrl}
-            >
+            onClick={this.changeUrl}>
             {book.title}
           </Link>
           <div className="book-title">{book.title}</div>

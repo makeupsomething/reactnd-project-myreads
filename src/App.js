@@ -14,7 +14,8 @@ class BooksApp extends React.Component {
     books: [],
     foundBooks: [],
     bookUrl: '/null',
-    book: ''
+    book: '',
+    booksToMove: []
   }
 
   componentDidMount() {
@@ -46,6 +47,14 @@ class BooksApp extends React.Component {
      this.setState({book: book})
    }
 
+   addBookToMove(bookToMove) {
+     console.log(bookToMove);
+     var newArray = this.state.booksToMove.slice();
+     newArray.push(bookToMove);
+     this.setState({booksToMove:newArray})
+     console.log(this.state.booksToMove)
+   }
+
   render() {
     return (
       <div className="app">
@@ -59,15 +68,21 @@ class BooksApp extends React.Component {
             updateBookStatus={(book, shelfType) => {
               this.updateBookStatus(book, shelfType)
             }}
-            setBookUrl={(newUrl, book) => {this.setBookUrl(newUrl, book)
+            setBookUrl={(newUrl, book) => {
+              this.setBookUrl(newUrl, book)
+            }}
+            addBookToMove={(bookToMove) => {
+              this.addBookToMove(bookToMove)
             }}
             />
           </div>
         )}/>
         <OpenSearch/>
         <ShelfChanger
-        book={this.state.book}
-        handleChange={this.updateBookStatus}/>
+        book={this.state.booksToMove}
+        handleChange={(book, shelfType) => {
+          this.updateBookStatus(book, shelfType)
+        }}/>
         <Route path='/search' render={() => (
           <div>
             <SearchBooks
