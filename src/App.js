@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import SearchBooks from './SearchBooks'
 import OpenSearch from './OpenSearch'
-import ShelfChanger from './ShelfChanger'
+import BulkShelfChanger from './BulkShelfChanger'
 import ListShelves from './ListShelves'
 import ListResults from './ListResults'
 import BookDetails from './BookDetails'
@@ -59,7 +59,7 @@ class BooksApp extends React.Component {
      console.log(this.state.booksToMove)
    }
 
-   bulkUpdateBookStatus() {
+   bulkUpdateBookStatus(newShelf) {
      console.log("moving many books");
      console.log(this.state.booksToMove)
      for (var i = 0; i < this.state.booksToMove.length; i++) {
@@ -90,10 +90,10 @@ class BooksApp extends React.Component {
           </div>
         )}/>
         <OpenSearch/>
-        <ShelfChanger
+        <BulkShelfChanger
         book={this.state.booksToMove}
-        handleChange={() => {
-          this.bulkUpdateBookStatus()
+        handleChange={(newShelf) => {
+          this.bulkUpdateBookStatus(newShelf)
         }}/>
         <Route path='/search' render={() => (
           <div>
