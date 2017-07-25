@@ -23,12 +23,10 @@ class Book extends Component {
       const value = target.type === 'checkbox' ? target.checked : target.value;
       const name = target.name;
 
-      this.setState({
-          [name]: value
-      });
-      
+      this.setState({[name]: value});
+
       if (this.props.addBookToMove) {
-          this.props.addBookToMove(this.props.book)
+          this.props.addBookToMove(this.props.book, value)
       }
   }
 

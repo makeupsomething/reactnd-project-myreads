@@ -47,12 +47,24 @@ class BooksApp extends React.Component {
      this.setState({book: book})
    }
 
-   addBookToMove(bookToMove) {
-     console.log(bookToMove);
+   addBookToMove(bookToMove, value) {
+     console.log(bookToMove + value);
      var newArray = this.state.booksToMove.slice();
-     newArray.push(bookToMove);
+     if ( value == true ) {
+       newArray.push(bookToMove)
+     } else {
+       newArray = newArray.filter(item => item !== bookToMove)
+     }
      this.setState({booksToMove:newArray})
      console.log(this.state.booksToMove)
+   }
+
+   bulkUpdateBookStatus() {
+     console.log("moving many books");
+     console.log(this.state.booksToMove)
+     for (var i = 0; i < this.state.booksToMove.length; i++) {
+       console.log(this.state.booksToMove[i])
+     }
    }
 
   render() {
@@ -71,8 +83,8 @@ class BooksApp extends React.Component {
             setBookUrl={(newUrl, book) => {
               this.setBookUrl(newUrl, book)
             }}
-            addBookToMove={(bookToMove) => {
-              this.addBookToMove(bookToMove)
+            addBookToMove={(bookToMove, value) => {
+              this.addBookToMove(bookToMove, value)
             }}
             />
           </div>
@@ -80,8 +92,8 @@ class BooksApp extends React.Component {
         <OpenSearch/>
         <ShelfChanger
         book={this.state.booksToMove}
-        handleChange={(book, shelfType) => {
-          this.updateBookStatus(book, shelfType)
+        handleChange={() => {
+          this.bulkUpdateBookStatus()
         }}/>
         <Route path='/search' render={() => (
           <div>

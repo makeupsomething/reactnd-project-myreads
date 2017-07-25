@@ -27,7 +27,7 @@ class Shelf extends Component {
                   }}
                   setBookUrl={(newUrl, book) => {setBookUrl(newUrl, book)
                   }}
-                  addBookToMove={(bookToMove) => {addBookToMove(bookToMove)
+                  addBookToMove={(bookToMove, value) => {addBookToMove(bookToMove, value)
                   }}
                   />
                 </li>
