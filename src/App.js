@@ -60,11 +60,19 @@ class BooksApp extends React.Component {
    }
 
    bulkUpdateBookStatus(newShelf) {
-     console.log("moving many books");
+     console.log("moving many books to " + newShelf);
      console.log(this.state.booksToMove)
      for (var i = 0; i < this.state.booksToMove.length; i++) {
-       console.log(this.state.booksToMove[i])
+       var tempBook = this.state.booksToMove[i]
+       if(tempBook.shelf !== newShelf) {
+         BooksAPI.update(tempBook, newShelf)
+       } else {
+         console.log("cannot move" + tempBook)
+       }
      }
+     BooksAPI.getAll().then((books) => {
+       this.setState({ books })
+     })
    }
 
   render() {
@@ -91,8 +99,7 @@ class BooksApp extends React.Component {
         )}/>
         <OpenSearch/>
         <BulkShelfChanger
-        book={this.state.booksToMove}
-        handleChange={(newShelf) => {
+        bulkUpdateBookStatus={(newShelf) => {
           this.bulkUpdateBookStatus(newShelf)
         }}/>
         <Route path='/search' render={() => (
