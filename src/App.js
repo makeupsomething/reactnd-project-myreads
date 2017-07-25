@@ -115,6 +115,12 @@ class BooksApp extends React.Component {
               updateBookStatus={(book, shelfType) => {
                 this.updateBookStatus(book, shelfType)
               }}
+              setBookUrl={(newUrl, book) => {
+                this.setBookUrl(newUrl, book)
+              }}
+              addBookToMove={(bookToMove, value) => {
+                this.addBookToMove(bookToMove, value)
+              }}
               /> : <p>No results found!</p>
               }
           </div>

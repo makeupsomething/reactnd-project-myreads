@@ -5,7 +5,7 @@ import * as BooksAPI from './BooksAPI'
 class ListResults extends Component {
 
   render() {
-    const { searchResults, updateBookStatus } = this.props
+    const { searchResults, updateBookStatus, setBookUrl, addBookToMove } = this.props
     return (
         <div className="list-results">
           <h2 className="results-title">Search Results</h2>
@@ -17,6 +17,10 @@ class ListResults extends Component {
                   book={book}
                   onUpdateShelf={(book, shelfType) => {
                     updateBookStatus(book, shelfType)
+                  }}
+                  setBookUrl={(newUrl, book) => {setBookUrl(newUrl, book)
+                  }}
+                  addBookToMove={(bookToMove, value) => {addBookToMove(bookToMove, value)
                   }}
                   />
                 </li>
