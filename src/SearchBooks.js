@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-import escapeRegExp from 'escape-string-regexp'
-import sortBy from 'sort-by'
 
 class SearchBooks extends Component {
 
@@ -11,7 +9,7 @@ class SearchBooks extends Component {
 
   updateQuery = (query) => {
     this.setState({ query: query.trim() })
-    let foundBooks = this.props.searchForBook(query)
+    this.props.searchForBook(query)
   }
 
   clearQuery = () => {

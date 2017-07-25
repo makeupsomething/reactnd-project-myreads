@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ShelfChanger from './ShelfChanger'
-import { Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class Book extends Component {
   constructor(props) {
@@ -70,22 +70,27 @@ class Book extends Component {
             backgroundImage: `url(${imageUrl})`
             }}>
           </div>
+        <ShelfChanger
+          book={book}
+          handleChange={this.handleChange}
+          />
         </div>
-          <Link
-            to={bookUrl}
-            className='open-book-page'
-            onClick={this.changeUrl}>
-            {book.title}
-          </Link>
-          <div className="book-title">{book.title}</div>
-          <div className="book-authors">{book.authors}</div>
-          <label>
+        <Link
+          to={bookUrl}
+          className='open-book-page'
+          onClick={this.changeUrl}>
+          {book.title}
+        </Link>
+        <div className="book-title">{book.title}</div>
+        <div className="book-authors">{book.authors}</div>
+        <label>
           Move:
           <input
             name="move"
             type="checkbox"
             checked={this.state.move}
-            onChange={this.handleInputChange} />
+            onChange={this.handleInputChange}
+          />
         </label>
       </div>
     )

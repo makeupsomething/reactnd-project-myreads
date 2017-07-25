@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ShelfChanger from './ShelfChanger'
-import { Route } from 'react-router-dom'
 
 class BookDetails extends Component {
   constructor(props) {

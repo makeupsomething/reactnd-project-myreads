@@ -6,12 +6,17 @@ class ListShelves extends Component {
   render() {
     const { books, updateBookStatus, setBookUrl, addBookToMove } = this.props
 
+    var shelfTypes = {};
+    shelfTypes["Currently Reading"] = "Currently Reading";
+    shelfTypes["Want To Read"] = "wantToRead";
+    shelfTypes["Read"] = "read";
+
     return (
         <div className="list-books-content">
           <div>
             <Shelf
             shelfName='Currently Reading'
-            shelfType='currentlyReading'
+            shelfType='Currently Reading'
             books={books}
             updateBookStatus={(book, shelfType) => {
               updateBookStatus(book, shelfType)
