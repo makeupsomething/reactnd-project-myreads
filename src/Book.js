@@ -18,7 +18,6 @@ class Book extends Component {
   }
 
   handleInputChange(event) {
-      console.log("add a book " + this.props.book.title)
       const target = event.target;
       const value = target.type === 'checkbox' ? target.checked : target.value;
       const name = target.name;

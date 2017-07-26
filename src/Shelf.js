@@ -4,7 +4,16 @@ import Book from './Book'
 class Shelf extends Component {
 
   render() {
-    const { shelfName, shelfType, books, updateBookStatus, setBookUrl, addBookToMove } = this.props
+    const { shelfName, books, updateBookStatus, setBookUrl, addBookToMove } = this.props
+    var shelfType
+    if(shelfName === 'Currently Reading') {
+      shelfType = 'currentlyReading'
+    } else if (shelfName === 'Want To Read') {
+      shelfType = 'wantToRead'
+    } else if (shelfName === 'Read') {
+      shelfType = 'read'
+    }
+
     let thisSelfStatus
     if (shelfName && books.length > 0) {
       thisSelfStatus = books.filter((book) => (shelfType === book.shelf))
