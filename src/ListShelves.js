@@ -14,13 +14,9 @@ class ListShelves extends Component {
             {shelfTypes.map(item => <Shelf
             shelfName={item}
             books={books}
-            updateBookStatus={(book, shelfType) => {
-              updateBookStatus(book, shelfType)
-            }}
-            setBookUrl={(newUrl, book) => {setBookUrl(newUrl, book)
-            }}
-            addBookToMove={(bookToMove, value) => {addBookToMove(bookToMove, value)
-            }}
+            updateBookStatus={(book, shelfType) => {updateBookStatus(book, shelfType)}}
+            setBookUrl={(newUrl, book) => {setBookUrl(newUrl, book)}}
+            addBookToMove={(bookToMove, value) => {addBookToMove(bookToMove, value)}}
             />)}
         </div>
       </div>
