@@ -9,6 +9,9 @@ import ListResults from './ListResults';
 import BookDetails from './BookDetails';
 import './App.css';
 
+/**
+ * Main book app
+ */
 class BooksApp extends React.Component {
   state = {
     books: [],
