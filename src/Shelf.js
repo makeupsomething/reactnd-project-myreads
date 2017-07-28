@@ -14,7 +14,7 @@ class Shelf extends Component {
   render() {
     const { shelfName, books, updateBookStatus, setBookUrl, addBookToMove } = this.props;
 
-    var shelfType;
+    let shelfType;
 
     if (shelfName === 'Currently Reading') {
       shelfType = 'currentlyReading';

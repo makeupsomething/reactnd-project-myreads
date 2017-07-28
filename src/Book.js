@@ -53,8 +53,8 @@ class Book extends Component {
   render() {
     const { book } = this.props;
 
-    var imageUrl;
-    var bookUrl = `/${book.id}`;
+    let imageUrl;
+    const bookUrl = `/${book.id}`;
 
     if (book.hasOwnProperty('imageLinks')) {
       imageUrl = book.imageLinks.thumbnail;

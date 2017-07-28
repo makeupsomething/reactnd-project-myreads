@@ -53,7 +53,7 @@ class BooksApp extends React.Component {
   }
 
   addBookToMove(bookToMove, value) {
-    var newArray = this.state.booksToMove.slice();
+    let newArray = this.state.booksToMove.slice();
     if (value === true) {
       newArray.push(bookToMove);
     } else {
@@ -63,8 +63,9 @@ class BooksApp extends React.Component {
   }
 
   bulkUpdateBookStatus(newShelf) {
-    for (var i = 0; i < this.state.booksToMove.length; i++) {
-      var tempBook = this.state.booksToMove[i];
+    let i;
+    for (i = 0; i < this.state.booksToMove.length; i += 1) {
+      const tempBook = this.state.booksToMove[i];
       if (tempBook.shelf !== newShelf) {
         BooksAPI.update(tempBook, newShelf);
       }

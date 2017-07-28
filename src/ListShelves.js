@@ -14,7 +14,7 @@ class ListShelves extends Component {
 
     const { books, updateBookStatus, setBookUrl, addBookToMove } = this.props;
 
-    var shelfTypes = ['Currently Reading', 'Want To Read', 'Read'];
+    const shelfTypes = ['Currently Reading', 'Want To Read', 'Read'];
 
     return (
       <div className="list-books-content">
