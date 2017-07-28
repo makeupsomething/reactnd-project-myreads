@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 class SearchBooks extends Component {
   static propTypes = {
     searchForBook: PropTypes.func.isRequired,
+    clearList: PropTypes.func.isRequired,
   }
 
   state = {
@@ -18,6 +19,7 @@ class SearchBooks extends Component {
 
   clearQuery = () => {
     this.setState({ query: '' });
+    this.props.clearList();
   }
 
   render() {

@@ -25,13 +25,16 @@ class BooksApp extends React.Component {
     BooksAPI.getAll().then((books) => {
       this.setState({ books });
     });
-    this.setState({ foundBooks: [] });
   }
 
-  setBookUrl(newUrl, book) {
-    newUrl = '/' + newUrl;
+  setBookUrl(book) {
+    const newUrl = `/${book.id}`;
     this.setState({ bookUrl: newUrl });
     this.setState({ book: book });
+  }
+
+  clearFoundBooks() {
+    this.setState({ foundBooks: [] });
   }
 
   updateBookStatus(book, newShelf) {
@@ -86,8 +89,8 @@ class BooksApp extends React.Component {
                 updateBookStatus={(book, shelfType) => {
                   this.updateBookStatus(book, shelfType);
                 }}
-                setBookUrl={(newUrl, book) => {
-                  this.setBookUrl(newUrl, book);
+                setBookUrl={(book) => {
+                  this.setBookUrl(book);
                 }}
                 addBookToMove={(bookToMove, value) => {
                   this.addBookToMove(bookToMove, value);
@@ -109,6 +112,9 @@ class BooksApp extends React.Component {
               <SearchBooks
                 searchForBook={(query) => {
                   this.searchForBooks(query);
+                }}
+                clearList={() => {
+                  this.clearFoundBooks();
                 }}
               />
               {this.state.foundBooks.length ?
@@ -133,6 +139,9 @@ class BooksApp extends React.Component {
           render={() => (
             <BookDetails
               book={this.state.book}
+              onUpdateShelf={(book, shelfType) => {
+                this.updateBookStatus(book, shelfType);
+              }}
             />
           )}
         />

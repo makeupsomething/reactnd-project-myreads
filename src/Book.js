@@ -47,7 +47,7 @@ class Book extends Component {
   }
 
   changeUrl() {
-    this.props.setBookUrl(this.props.book.id, this.props.book);
+    this.props.setBookUrl(this.props.book);
   }
 
   render() {

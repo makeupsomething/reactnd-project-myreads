@@ -11,7 +11,6 @@ class ListResults extends Component {
   }
 
   render() {
-
     const { searchResults, updateBookStatus, setBookUrl, addBookToMove } = this.props;
 
     return (
