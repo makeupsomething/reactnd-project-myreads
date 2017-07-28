@@ -11,6 +11,7 @@ class ListShelves extends Component {
       <div className="list-books-content">
         <div>
           {shelfTypes.map(item => (<Shelf
+            key={item}
             shelfName={item}
             books={books}
             updateBookStatus={(book, shelfType) => { updateBookStatus(book, shelfType); }}
