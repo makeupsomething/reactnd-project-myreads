@@ -1,62 +1,61 @@
 import React, { Component } from 'react';
-import ShelfChanger from './ShelfChanger'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import ShelfChanger from './ShelfChanger';
 
 class Book extends Component {
   constructor(props) {
-      super(props);
-      this.state = {
-          value: 'none',
-          bookUrl: 'none',
-          book: '',
-          move: false
-      }
+    super(props);
+    this.state = {
+      value: 'none',
+      bookUrl: 'none',
+      book: '',
+      move: false,
+    };
 
-      this.handleChange = this.handleChange.bind(this);
-      this.changeUrl = this.changeUrl.bind(this)
-      this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.changeUrl = this.changeUrl.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   handleInputChange(event) {
-      const target = event.target;
-      const value = target.type === 'checkbox' ? target.checked : target.value;
-      const name = target.name;
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
 
-      this.setState({[name]: value});
+    this.setState({ [name]: value });
 
-      if (this.props.addBookToMove) {
-          this.props.addBookToMove(this.props.book, value)
-      }
+    if (this.props.addBookToMove) {
+      this.props.addBookToMove(this.props.book, value);
+    }
   }
 
   handleChange(event) {
-      this.setState({
-          value: event.target.value
-      });
-      if (this.props.onUpdateShelf) {
-          this.props.onUpdateShelf(this.props.book, event.target.value)
-      }
+    this.setState({
+      value: event.target.value,
+    });
+    if (this.props.onUpdateShelf) {
+      this.props.onUpdateShelf(this.props.book, event.target.value);
+    }
   }
 
-  changeUrl(book) {
-      console.log(this.props.book)
-      this.props.setBookUrl(this.props.book.id, this.props.book)
+  changeUrl() {
+      this.props.setBookUrl(this.props.book.id, this.props.book);
   }
 
   render() {
-    const {book} = this.props
+    const { book } = this.props;
 
-    var imageUrl
-    var bookUrl = '/' + book.id
+    var imageUrl;
+    var bookUrl = `/${book.id}`;
 
-    if (book.hasOwnProperty("imageLinks")) {
-        imageUrl = book.imageLinks.thumbnail
+    if (book.hasOwnProperty('imageLinks')) {
+      imageUrl = book.imageLinks.thumbnail;
     } else {
-        imageUrl = 'icons/no-cover.png'
+      imageUrl = 'icons/no-cover.png';
     }
 
     if (book.shelf === null) {
-        book.shelf = 'none'
+      book.shelf = 'none';
     }
 
     return (
@@ -65,19 +64,21 @@ class Book extends Component {
           <div
             className="book-cover"
             style={{ width: 128,
-            height: 188,
-            backgroundImage: `url(${imageUrl})`
-            }}>
+              height: 188,
+              backgroundImage: `url(${imageUrl})`,
+            }}
+          >
           </div>
-        <ShelfChanger
-          book={book}
-          handleChange={this.handleChange}
+          <ShelfChanger
+            book={book}
+            handleChange={this.handleChange}
           />
         </div>
         <Link
           to={bookUrl}
-          className='open-book-page'
-          onClick={this.changeUrl}>
+          className="open-book-page"
+          onClick={this.changeUrl}
+        >
           {book.title}
         </Link>
         <div className="book-title">{book.title}</div>
@@ -92,8 +93,8 @@ class Book extends Component {
           />
         </label>
       </div>
-    )
+    );
   }
 }
 
-export default Book
+export default Book;
