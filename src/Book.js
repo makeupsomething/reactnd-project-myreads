@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import ShelfChanger from './ShelfChanger';
 
 class Book extends Component {
+  static propTypes = {
+    book: PropTypes.object,
+    addBookToMove: PropTypes.func.isRequired,
+    onUpdateShelf: PropTypes.func.isRequired,
+    setBookUrl: PropTypes.func.isRequired,
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -39,7 +47,7 @@ class Book extends Component {
   }
 
   changeUrl() {
-      this.props.setBookUrl(this.props.book.id, this.props.book);
+    this.props.setBookUrl(this.props.book.id, this.props.book);
   }
 
   render() {

@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ShelfChanger from './ShelfChanger';
 
 class BookDetails extends Component {
+  static propTypes = {
+    book: PropTypes.object,
+    onUpdateShelf: PropTypes.func.isRequired,
+  }
+
   constructor(props) {
     super(props);
     this.state = {

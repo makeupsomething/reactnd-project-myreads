@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Book from './Book';
 
 class ListResults extends Component {
+  static propTypes = {
+    searchResults: PropTypes.array.isRequired,
+    updateBookStatus: PropTypes.func.isRequired,
+    setBookUrl: PropTypes.func.isRequired,
+    addBookToMove: PropTypes.func.isRequired,
+  }
+
   render() {
+
     const { searchResults, updateBookStatus, setBookUrl, addBookToMove } = this.props;
 
     return (

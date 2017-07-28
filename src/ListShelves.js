@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Shelf from './Shelf';
 
 class ListShelves extends Component {
+  static propTypes = {
+    books: PropTypes.array.isRequired,
+    updateBookStatus: PropTypes.func.isRequired,
+    setBookUrl: PropTypes.func.isRequired,
+    addBookToMove: PropTypes.func.isRequired,
+  }
+
   render() {
+
     const { books, updateBookStatus, setBookUrl, addBookToMove } = this.props;
 
     var shelfTypes = ['Currently Reading', 'Want To Read', 'Read'];

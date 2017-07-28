@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 class SearchBooks extends Component {
+  static propTypes = {
+    searchForBook: PropTypes.func.isRequired,
+  }
+
   state = {
     query: '',
   }

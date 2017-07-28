@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class BulkShelfChanger extends Component {
+  static propTypes = {
+    bulkUpdateBookStatus: PropTypes.func.isRequired,
+  }
+
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
