@@ -5,6 +5,7 @@ import ShelfChanger from './ShelfChanger';
 
 class Book extends Component {
   static propTypes = {
+    books: PropTypes.array,
     book: PropTypes.object,
     addBookToMove: PropTypes.func.isRequired,
     onUpdateShelf: PropTypes.func.isRequired,
@@ -51,7 +52,7 @@ class Book extends Component {
   }
 
   render() {
-    const { book } = this.props;
+    const { books, book } = this.props;
 
     let imageUrl;
     const bookUrl = `/${book.id}`;
@@ -60,10 +61,6 @@ class Book extends Component {
       imageUrl = book.imageLinks.thumbnail;
     } else {
       imageUrl = 'icons/no-cover.png';
-    }
-
-    if (book.shelf === null) {
-      book.shelf = 'none';
     }
 
     return (
@@ -78,6 +75,7 @@ class Book extends Component {
           >
           </div>
           <ShelfChanger
+            books={books}
             book={book}
             handleChange={this.handleChange}
           />

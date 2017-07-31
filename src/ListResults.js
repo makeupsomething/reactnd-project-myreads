@@ -4,6 +4,7 @@ import Book from './Book';
 
 class ListResults extends Component {
   static propTypes = {
+    books: PropTypes.array.isRequired,
     searchResults: PropTypes.array.isRequired,
     updateBookStatus: PropTypes.func.isRequired,
     setBookUrl: PropTypes.func.isRequired,
@@ -11,7 +12,7 @@ class ListResults extends Component {
   }
 
   render() {
-    const { searchResults, updateBookStatus, setBookUrl, addBookToMove } = this.props;
+    const { books, searchResults, updateBookStatus, setBookUrl, addBookToMove } = this.props;
 
     return (
       <div className="list-results">
@@ -21,6 +22,7 @@ class ListResults extends Component {
             {searchResults.map(book => (
               <li key={book.id} className="book-item">
                 <Book
+                  books={books}
                   book={book}
                   onUpdateShelf={(book, shelfType) => {
                     updateBookStatus(book, shelfType);

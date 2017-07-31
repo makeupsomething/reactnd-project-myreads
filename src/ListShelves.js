@@ -11,9 +11,7 @@ class ListShelves extends Component {
   }
 
   render() {
-
     const { books, updateBookStatus, setBookUrl, addBookToMove } = this.props;
-
     const shelfTypes = ['Currently Reading', 'Want To Read', 'Read'];
 
     return (

@@ -120,6 +120,7 @@ class BooksApp extends React.Component {
               />
               {this.state.foundBooks.length ?
                 <ListResults
+                  books={this.state.books}
                   searchResults={this.state.foundBooks}
                   updateBookStatus={(book, shelfType) => {
                     this.updateBookStatus(book, shelfType);
