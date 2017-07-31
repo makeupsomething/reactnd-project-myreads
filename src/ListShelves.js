@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Shelf from './Shelf';
 
+/**
+* @description Component for listing the shelves
+*/
 class ListShelves extends Component {
   static propTypes = {
     books: PropTypes.array.isRequired,
@@ -10,6 +13,10 @@ class ListShelves extends Component {
     addBookToMove: PropTypes.func.isRequired,
   }
 
+  /**
+  * @description The render function
+  * @returns { object } The UI
+  */
   render() {
     const { books, updateBookStatus, setBookUrl, addBookToMove } = this.props;
     const shelfTypes = ['Currently Reading', 'Want To Read', 'Read'];
