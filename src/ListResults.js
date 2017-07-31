@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Book from './Book';
 
+/**
+* @description Component for listing the books found when querying the API
+*/
 class ListResults extends Component {
   static propTypes = {
     books: PropTypes.array.isRequired,
@@ -11,6 +14,10 @@ class ListResults extends Component {
     addBookToMove: PropTypes.func.isRequired,
   }
 
+  /**
+  * @description The render function
+  * @returns { object } The UI
+  */
   render() {
     const { books, searchResults, updateBookStatus, setBookUrl, addBookToMove } = this.props;
 
