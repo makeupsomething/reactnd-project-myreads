@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ShelfChanger from './ShelfChanger';
 
+/**
+* @description See the books details on a standalone page
+*/
 class BookDetails extends Component {
   static propTypes = {
     book: PropTypes.object,
@@ -17,6 +20,11 @@ class BookDetails extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  /**
+  * @description Perfoms an action when the user changes the shelf value
+  * @param {string} event - The event object
+  * @returns {void}
+  */
   handleChange(event) {
     this.setState({
       value: event.target.value,
@@ -27,13 +35,18 @@ class BookDetails extends Component {
     }
   }
 
+  /**
+  * @description The render function
+  * @returns { object } The UI
+  */
   render() {
     const { book } = this.props;
-    var imageUrl;
+    let imageUrl;
+
     if (book.hasOwnProperty('imageLinks')) {
       imageUrl = book.imageLinks.thumbnail;
     } else {
-      imageUrl = 'icons/no-cover.png';
+      imageUrl = './icons/no-cover.png';
     }
 
     if (book.shelf === null) {
