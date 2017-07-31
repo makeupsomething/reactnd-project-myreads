@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+/**
+* @description Component for searching for books
+* @returns {void}
+*/
 class SearchBooks extends Component {
   static propTypes = {
     searchForBook: PropTypes.func.isRequired,
@@ -12,16 +16,29 @@ class SearchBooks extends Component {
     query: '',
   }
 
+  /**
+  * @description Updates the search query based on what the user has typed into the search bar
+  * @param {string} query - The book object
+  * @returns {void}
+  */
   updateQuery = (query) => {
     this.setState({ query: query.trim() });
     this.props.searchForBook(query);
   }
 
+  /**
+  * @description Clears the query and the list of found books
+  * @returns {void}
+  */
   clearQuery = () => {
     this.setState({ query: '' });
     this.props.clearList();
   }
 
+  /**
+  * @description The render function
+  * @returns { object } The UI
+  */
   render() {
     const { query } = this.state;
 

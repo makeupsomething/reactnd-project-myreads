@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Book from './Book';
 
+/**
+* @description The shelf Component
+*/
 class Shelf extends Component {
   static propTypes = {
     shelfName: PropTypes.string.isRequired,
@@ -11,6 +14,10 @@ class Shelf extends Component {
     addBookToMove: PropTypes.func.isRequired,
   }
 
+  /**
+  * @description The render function
+  * @returns { object } The UI
+  */
   render() {
     const { shelfName, books, updateBookStatus, setBookUrl, addBookToMove } = this.props;
 

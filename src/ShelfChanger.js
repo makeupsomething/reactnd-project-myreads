@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+/**
+* @description Component for changing books to another shelf
+*/
 class ShelfChanger extends Component {
   static propTypes = {
     books: PropTypes.array,
@@ -8,6 +11,10 @@ class ShelfChanger extends Component {
     handleChange: PropTypes.func.isRequired,
   }
 
+  /**
+  * @description The render function
+  * @returns { object } The UI
+  */
   render() {
     const { books, book, handleChange } = this.props;
     let thisSelfStatus;
