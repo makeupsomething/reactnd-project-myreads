@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ShelfChanger from './ShelfChanger';
 
+/**
+* @description Creates a new book Component
+*/
 class Book extends Component {
   static propTypes = {
     books: PropTypes.array,
@@ -26,6 +29,11 @@ class Book extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
+  /**
+  * @description Perfoms an action when the books checkbox value changes
+  * @param {string} event - The event object
+  * @returns {void}
+  */
   handleInputChange(event) {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -38,6 +46,11 @@ class Book extends Component {
     }
   }
 
+  /**
+  * @description Perfoms an action when the user selects a new shelf value from the form
+  * @param {string} event - The event object
+  * @returns {void}
+  */
   handleChange(event) {
     this.setState({
       value: event.target.value,
@@ -47,10 +60,18 @@ class Book extends Component {
     }
   }
 
+  /**
+  * @description Sets the URL for this book
+  * @returns {void}
+  */
   changeUrl() {
     this.props.setBookUrl(this.props.book);
   }
 
+  /**
+  * @description The render function
+  * @returns { object } The UI
+  */
   render() {
     const { books, book } = this.props;
 
