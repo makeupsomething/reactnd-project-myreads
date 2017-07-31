@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+/**
+* @description Moves a lost of books to a different shelf
+*/
 class BulkShelfChanger extends Component {
   static propTypes = {
     bulkUpdateBookStatus: PropTypes.func.isRequired,
@@ -11,10 +14,19 @@ class BulkShelfChanger extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  /**
+  * @description Perfoms an action when the user selects a shelf value
+  * @param {string} event - The event object
+  * @returns {void}
+  */
   handleChange(event) {
     this.props.bulkUpdateBookStatus(event.target.value);
   }
 
+  /**
+  * @description The render function
+  * @returns {object} The UI
+  */
   render() {
     return (
       <div className="book-shelf-changer-bulk">
