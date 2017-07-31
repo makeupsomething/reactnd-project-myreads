@@ -10,8 +10,8 @@ import BookDetails from './BookDetails';
 import './App.css';
 
 /**
- * Main book app
- */
+* @description The main app
+*/
 class BooksApp extends React.Component {
   state = {
     books: [],
@@ -21,22 +21,41 @@ class BooksApp extends React.Component {
     booksToMove: [],
   }
 
+  /**
+  * @description Perfoms an action when the Component mounts
+  * @returns {void}
+  */
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
       this.setState({ books });
     });
   }
 
+  /**
+  * @description Sets the URL to view the individual book details
+  * @param {string} book - The book object
+  * @returns {void}
+  */
   setBookUrl(book) {
     const newUrl = `/${book.id}`;
     this.setState({ bookUrl: newUrl });
     this.setState({ book: book });
   }
 
+  /**
+  * @description Clears the list of found books
+  * @returns {void}
+  */
   clearFoundBooks() {
     this.setState({ foundBooks: [] });
   }
 
+  /**
+  * @description Clears the list of found books
+  * @param {string} book - The book object
+  * @param {string} newShelf - The name of the shelf the book will move to
+  * @returns {void}
+  */
   updateBookStatus(book, newShelf) {
     BooksAPI.update(book, newShelf);
     BooksAPI.getAll().then((books) => {
@@ -44,6 +63,11 @@ class BooksApp extends React.Component {
     });
   }
 
+  /**
+  * @description Clears the list of found books
+  * @param {string} query - What we are searching for
+  * @returns {void}
+  */
   searchForBooks(query) {
     if (query.length > 0) {
       BooksAPI.search(query, 10).then((foundBooks) => {
@@ -52,6 +76,12 @@ class BooksApp extends React.Component {
     }
   }
 
+  /**
+  * @description Adds/Removes a book from a list of books we want to bulk move
+  * @param {string} bookToMove - The book to add/remove to the list
+  * @param {string} value - The book is already in the list or notw
+  * @returns {void}
+  */
   addBookToMove(bookToMove, value) {
     let newArray = this.state.booksToMove.slice();
     if (value === true) {
@@ -62,6 +92,11 @@ class BooksApp extends React.Component {
     this.setState({ booksToMove: newArray });
   }
 
+  /**
+  * @description Bulk moves a list of books to another shelf
+  * @param {string} newShelf - The name of the shelf the books will move to
+  * @returns {void}
+  */
   bulkUpdateBookStatus(newShelf) {
     let i;
     for (i = 0; i < this.state.booksToMove.length; i += 1) {
@@ -76,6 +111,10 @@ class BooksApp extends React.Component {
     this.setState({ booksToMove: [] });
   }
 
+  /**
+  * @description The render function
+  * @returns { object } The UI
+  */
   render() {
     return (
       <div className="app">
