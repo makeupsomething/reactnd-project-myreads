@@ -33,7 +33,7 @@ class BookDetails extends Component {
     if(book.shelf === null) {
       book.shelf = 'none'
     }
-
+    console.log(book);
     return (
       <div className="book">
         <div className="book-top">
@@ -51,6 +51,7 @@ class BookDetails extends Component {
         </div>
           <div className="book-title">{book.title}</div>
           <div className="book-authors">{book.authors}</div>
+          <div className="book-description">{book.description}</div>
       </div>
     )
   }
