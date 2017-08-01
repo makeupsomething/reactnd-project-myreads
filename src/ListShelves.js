@@ -1,54 +1,41 @@
 import React, { Component } from 'react';
-import Shelf from './Shelf'
+import PropTypes from 'prop-types';
+import Shelf from './Shelf';
 
+/**
+* @description Component for listing the shelves
+*/
 class ListShelves extends Component {
+  static propTypes = {
+    books: PropTypes.array.isRequired,
+    updateBookStatus: PropTypes.func.isRequired,
+    setBookUrl: PropTypes.func.isRequired,
+    addBookToMove: PropTypes.func.isRequired,
+  }
 
+  /**
+  * @description The render function
+  * @returns { object } The UI
+  */
   render() {
-    const { books, updateBookStatus, setBookUrl, addBookToMove } = this.props
+    const { books, updateBookStatus, setBookUrl, addBookToMove } = this.props;
+    const shelfTypes = ['Currently Reading', 'Want To Read', 'Read'];
 
     return (
-        <div className="list-books-content">
-          <div>
-            <Shelf
-            shelfName='Currently Reading'
-            shelfType='currentlyReading'
+      <div className="list-books-content">
+        <div>
+          {shelfTypes.map(item => (<Shelf
+            key={item}
+            shelfName={item}
             books={books}
-            updateBookStatus={(book, shelfType) => {
-              updateBookStatus(book, shelfType)
-            }}
-            setBookUrl={(newUrl, book) => {setBookUrl(newUrl, book)
-            }}
-            addBookToMove={(bookToMove, value) => {addBookToMove(bookToMove, value)
-            }}
-            />
-            <Shelf
-            shelfName='Want To Read'
-            shelfType='wantToRead'
-            books={books}
-            updateBookStatus={(book, shelfType) => {
-              updateBookStatus(book, shelfType)
-            }}
-            setBookUrl={(newUrl, book) => {setBookUrl(newUrl, book)
-            }}
-            addBookToMove={(bookToMove, value) => {addBookToMove(bookToMove, value)
-            }}
-            />
-            <Shelf
-            shelfName='Read'
-            shelfType='read'
-            books={books}
-            updateBookStatus={(book, shelfType) => {
-              updateBookStatus(book, shelfType)
-            }}
-            setBookUrl={(newUrl, book) => {setBookUrl(newUrl, book)
-            }}
-            addBookToMove={(bookToMove, value) => {addBookToMove(bookToMove, value)
-            }}
-            />
+            updateBookStatus={(book, shelfType) => { updateBookStatus(book, shelfType); }}
+            setBookUrl={(newUrl, book) => { setBookUrl(newUrl, book); }}
+            addBookToMove={(bookToMove, value) => { addBookToMove(bookToMove, value); }}
+          />))}
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default ListShelves
+export default ListShelves;
