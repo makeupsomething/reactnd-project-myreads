@@ -18,7 +18,6 @@ class Book extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 'none',
       bookUrl: 'none',
       book: '',
       move: false,
@@ -52,9 +51,6 @@ class Book extends Component {
   * @returns {void}
   */
   handleChange(event) {
-    this.setState({
-      value: event.target.value,
-    });
     if (this.props.onUpdateShelf) {
       this.props.onUpdateShelf(this.props.book, event.target.value);
     }

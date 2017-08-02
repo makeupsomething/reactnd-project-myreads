@@ -57,9 +57,33 @@ class BooksApp extends React.Component {
   * @returns {void}
   */
   updateBookStatus(book, newShelf) {
-    BooksAPI.update(book, newShelf);
-    BooksAPI.getAll().then((books) => {
-      this.setState({ books });
+    BooksAPI.update(book, newShelf).then(console.log("updated"));
+
+    let inArray = false;
+    if (this.state.books.length > 0) {
+      const tempBook = this.state.books.filter(b => (book.id === b.id));
+      if (tempBook.length > 0) {
+        inArray = true;
+      } else {
+        inArray = false;
+      }
+    }
+
+    let newArray = this.state.books.slice();
+    if (inArray === false) {
+      newArray.push(book);
+      console.log("add to books array " + book.title);
+    }
+
+    this.setState({ books: newArray });
+
+    this.setState(state => {
+      const updatedBooks = state.books.map(nbook => {
+        nbook.shelf = nbook.id === book.id ? newShelf : nbook.shelf
+        return nbook
+      });
+      console.log("move book:" + book.title + '...' + book.shelf + '...' + newShelf)
+      return { books: updatedBooks }
     });
   }
 
@@ -102,12 +126,13 @@ class BooksApp extends React.Component {
     for (i = 0; i < this.state.booksToMove.length; i += 1) {
       const tempBook = this.state.booksToMove[i];
       if (tempBook.shelf !== newShelf) {
-        BooksAPI.update(tempBook, newShelf);
+        this.updateBookStatus(tempBook, newShelf)
+        //BooksAPI.update(tempBook, newShelf);
       }
     }
-    BooksAPI.getAll().then((books) => {
-      this.setState({ books });
-    });
+    //BooksAPI.getAll().then((books) => {
+    //  this.setState({ books });
+    //});
     this.setState({ booksToMove: [] });
   }
 
