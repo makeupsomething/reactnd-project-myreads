@@ -28,4 +28,4 @@ As this is a personal project just for the purposes of learning react contributi
 
 ## License
 
-icensed under the MIT license.
+Licensed under the MIT license.
