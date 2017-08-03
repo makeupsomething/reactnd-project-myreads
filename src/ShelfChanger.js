@@ -17,9 +17,9 @@ class ShelfChanger extends Component {
   */
   render() {
     const { books, book, handleChange } = this.props;
-    //let thisSelfStatus;
+    let thisSelfStatus;
 
-    /*if (books.length > 0) {
+    if (books && books.length > 0) {
       const tempBook = books.filter(b => (book.id === b.id));
       if (tempBook.length > 0) {
         thisSelfStatus = tempBook[0].shelf;
@@ -28,12 +28,12 @@ class ShelfChanger extends Component {
       }
     } else {
       thisSelfStatus = book.shelf;
-    }*/
-    //thisSelfStatus = book.shelf;
+    }
+
     return (
       <div className="book-shelf-changer">
         <form>
-          <select value={book.shelf} onChange={handleChange}>
+          <select value={thisSelfStatus} onChange={handleChange}>
             <option value="none" disabled>Move to...</option>
             <option value="wantToRead">Want to Read</option>
             <option value="read">Read</option>

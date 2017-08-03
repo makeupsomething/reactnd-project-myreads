@@ -44,7 +44,7 @@ class Shelf extends Component {
         <div className="bookshelf-books">
           <ol className="books-grid">
             {thisSelfStatus.map(book => (
-              <li key={book.id} className="contact-list-item">
+              <li key={`${book.id}-${book.title}`} className="contact-list-item">
                 <Book
                   book={book}
                   onUpdateShelf={(book, shelfType) => {

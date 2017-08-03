@@ -27,7 +27,7 @@ class ListResults extends Component {
         <div className="found-books">
           <ol className="books-grid">
             {searchResults.map(book => (
-              <li key={book.id} className="book-item">
+              <li key={`${book.id}-${book.title}`} className="book-item">
                 <Book
                   books={books}
                   book={book}
