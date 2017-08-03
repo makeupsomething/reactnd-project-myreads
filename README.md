@@ -24,3 +24,7 @@ You can also click on the title of the book to be brought to the books individua
 ## Contributing
 
 As this is a personal project just for the purposes of learning react contributions will probably not be accepted.
+
+## License
+
+icensed under the MIT license.
