@@ -7,6 +7,7 @@ This is my effort for the first project in the Udacity React Nanodegree.
 It can be installed and started with the commands
 
 `npm install`
+
 `npm start`
 
 The first screen shows 3 shelves of books. You can move books to another shelf by clicking the green icon beside the book and selecting the shelf name.
