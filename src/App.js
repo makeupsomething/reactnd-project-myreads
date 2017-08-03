@@ -195,16 +195,6 @@ class BooksApp extends React.Component {
             </div>
           )}
         />
-        <OpenSearch
-          clearBulkMoveBooks={() => {
-            this.clearBulkMoveBooks();
-          }}
-        />
-        <BulkShelfChanger
-          bulkUpdateBookStatus={(newShelf) => {
-            this.bulkUpdateBookStatus(newShelf);
-          }}
-        />
         <Route
           path="/search"
           render={() => (
@@ -248,6 +238,16 @@ class BooksApp extends React.Component {
               }}
             />
           )}
+        />
+        <OpenSearch
+          clearBulkMoveBooks={() => {
+            this.clearBulkMoveBooks();
+          }}
+        />
+        <BulkShelfChanger
+          bulkUpdateBookStatus={(newShelf) => {
+            this.bulkUpdateBookStatus(newShelf);
+          }}
         />
       </div>
     );
